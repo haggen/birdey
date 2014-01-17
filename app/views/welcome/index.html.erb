@@ -1,0 +1,25 @@
+<h1>Birdey</h1>
+
+<blockquote>
+  <p>Get your last tweet hassle-free.</p>
+</blockquote>
+
+<h2>Usage</h2>
+
+<pre>
+  GET /username(.html)
+</pre>
+
+<p>Will return your last in HTML with mentions and URL auto linked.</p>
+<p>The format is optional, but you may provide other formats such as:</p>
+
+<dl>
+  <dt>JSON</dt>
+  <dd>Return an object with one key: <code>tweet</code></dd>
+  <dt>TXT</dt>
+  <dd>Return the tweet in plain text, no auto linking.</dd>
+  <dt>JS</dt>
+  <dd>You must also provide a <code>callback</code> parameter in the URL.</dd>
+</dl>
+
+<p>All tweets are cached for <strong>1 hour</strong>, so once you update your status you'll to wait until it expires.</p>

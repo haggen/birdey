@@ -1,25 +1,78 @@
-<h1>Birdey</h1>
+<header>
+  <h1>Birdey</h1>
 
-<blockquote>
-  <p>Get your last tweet hassle-free.</p>
-</blockquote>
+  <blockquote>
+    <p>Get your last tweet hassle free.</p>
+  </blockquote>
+</header>
 
-<h2>Usage</h2>
+<main>
+  <section>
+    <h2>Try it</h2>
 
-<pre>
-  GET /username(.html)
-</pre>
+    <blockquote class="tweet">
+      <p>Try me now, type in your <em>username</em> below and see the magic happen!</p>
+      <cite>&mdash; Birdey</cite>
+    </blockquote>
 
-<p>Will return your last in HTML with mentions and URL auto linked.</p>
-<p>The format is optional, but you may provide other formats such as:</p>
+    <form class="try">
+      <input type="text" name="username">
+      <button>Go fetch it!</button>
+    </form>
+  </section>
 
-<dl>
-  <dt>JSON</dt>
-  <dd>Return an object with one key: <code>tweet</code></dd>
-  <dt>TXT</dt>
-  <dd>Return the tweet in plain text, no auto linking.</dd>
-  <dt>JS</dt>
-  <dd>You must also provide a <code>callback</code> parameter in the URL.</dd>
-</dl>
+  <section>
+    <h2>Usage</h2>
 
-<p>All tweets are cached for <strong>1 hour</strong>, so once you update your status you'll to wait until it expires.</p>
+    <pre><span class="verb">GET</span> <span class="path">/username</span></pre>
+
+    <p>Will return user's last tweet in HTML with <strong>mentions and addresses as anchors</strong>.</p>
+    <p>There are several formats you can request, take a look at the table below:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTML</td>
+          <td>Response in <code>text/html</code>, auto link enabled.</td>
+          <td><code>Hi! I am &lt;a class="tweet-url hashtag" href="https://twitter.com/#!/search?q=%23birdey" rel="nofollow" title="#birdey"&gt;#birdey&lt;/a&gt;, check me out &lt;a href="http://t.co/mTOdwr3FxU" rel="nofollow"&gt;http://t.co/mTOdwr3FxU&lt;/a&gt;</code></td>
+        </tr>
+        <tr>
+          <td>JSON</td>
+          <td>Response in <code>application/json</code>, an object with only the key <code>tweet</code>.</td>
+          <td><code>{"tweet": "Hi! I am #birdey, check me out http://t.co/mTOdwr3FxU"}</code></td>
+        </tr>
+        <tr>
+          <td>TXT</td>
+          <td>Response in <code>plain/text</code>, just the tweet.</td>
+          <td><code>Hi! I am #birdey, check me out http://t.co/mTOdwr3FxU</code></td>
+        </tr>
+        <tr>
+          <td>JS</td>
+          <td>Response in <code>text/javascript</code>. You also must provide a <code>callback</code> parameter in the URL.</td>
+          <td><code>;fn('Hi! I am #birdey, check me out http://t.co/mTOdwr3FxU');</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Note</h3>
+    <p>All tweets are cached for <strong>1 hour</strong>, so once you update your status you'll have to wait until the cache expires.</p>
+  </section>
+
+  <section>
+
+    <h2>Disclaimer</h2>
+
+    <p>This is a pet project, not filiated nor funded by any company, thus it may change, it may cease to exist and you'll <strong>not be notified</strong>. Use at your own risk.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Made by <a href="http://twitter.com/haggen">@haggen</a>, in Brazil. Source at <a href="https://github.com/haggen/birdey">GitHub</a>.</p>
+</footer>

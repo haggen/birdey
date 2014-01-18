@@ -13,3 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$('.try').on('submit', function(e) {
+  e.preventDefault();
+
+  $('.tweet p').text('Loading...');
+
+  $.get('/' + this.username.value, function(response) {
+    $('.tweet p').html(response);
+
+    console.log(response);
+  });
+
+  $('.tweet cite').html('&mdash; ' + this.username.value);
+
+  this.username.value = '';
+});

@@ -3,22 +3,25 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.2'
-gem 'pg'
+gem 'keen'
 gem 'twitter'
-gem 'twitter-text', github: 'twitter/twitter-text-rb'
-gem 'iron_cache'
+gem 'twitter-text', :github => 'twitter/twitter-text-rb'
 gem 'rack-cors'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-# gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  gem 'sdoc', require: false
+  gem 'sdoc', :require => false
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'pg'
 end

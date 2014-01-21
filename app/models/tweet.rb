@@ -1,41 +1,26 @@
-require 'iron_cache'
+class Tweet < ActiveRecord::Base
+  EXPIRY = 1.hour
 
-class Tweet # < ActiveRecord::Base
-  def self.by(username)
-    iron = IronCache::Client.new
-    cache = iron.cache('tweets')
+  after_initialize do
+    update_status if status.blank? || expired?
+  end
 
-    tweet = cache.get(username).try(:value)
+  def expired?
+    updated_at + EXPIRY <= Time.now
+  end
 
-    unless tweet 
+  def update_status
+    unless username.blank?
       twitter = Twitter::REST::Client.new do |config|
         config.consumer_key    = ENV['TWITTER_CONSUMER_KEY']
         config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
       end
 
-      tweet = twitter.user_timeline(username, count: 1).last.text
-      cache.put(username, tweet, expires_in: 1.hour)
+      update(:status => twitter.user_timeline(username, count: 1).last.text, :updated_at => Time.now)
     end
+  end
 
-    ranking = iron.cache('ranking')
-    keys = ranking.get('_keys').try(:value)
-
-    puts 'BEFORE:', keys
-
-    if keys
-      keys = keys.split(',')
-      keys.push(username)
-      keys = keys.uniq.join(',')
-    else
-      keys = username
-    end
-
-    puts 'AFTER:', keys
-
-    ranking.put('_keys', keys)
-
-    ranking.increment(username, 1)
-
-    tweet
+  def self.by(value)
+    where(:username => value).first_or_create
   end
 end

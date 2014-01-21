@@ -1,0 +1,154 @@
+
+body {
+  font: 16px/1 Lato, Roboto, Source Sans Pro, Helvetica Neue, sans-serif;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+a {
+  color: $blue;
+
+  &:hover {
+    background: rgba($blue, .1);
+    // color: $aqua;
+  }
+}
+
+h1,
+h2 {
+  font-weight: 400;
+  color: #000;
+}
+
+h3, 
+h4 {
+  font-weight: 400;
+}
+
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.427em
+}
+
+h2 {
+  font-size: 2.0225em
+}
+
+h3 {
+  font-size: 1.618em
+}
+
+h4 {
+  font-size: 1.41575em
+}
+
+h5 {
+  font-size: 1.2135em
+}
+
+h6 {
+  font-size: 1em
+}
+
+p,
+ul,
+ol,
+dl,
+h1, 
+h2, 
+h3,
+h4,
+h5,
+h6,
+hr,
+pre,
+form,
+table,
+blockquote {
+  margin-bottom: 1rem;
+}
+
+p,
+ul,
+ol,
+dl,
+pre,
+table,
+form {
+  & + h1,
+  & + h2,
+  & + h3,
+  & + h4 {
+    margin-top: 1.618rem;
+  }
+
+  & + h5,
+  & + h6 {
+    margin-top: 1.618rem;
+  }
+}
+
+p,
+ul,
+ol,
+dl,
+table {
+  line-height: 1.41575
+}
+
+ul,
+ol {
+  padding-left: 1.618em  
+}
+
+acronym {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+blockquote {
+  border-left: .618em solid darken(#fff, 8%);
+  padding-left: 1em;
+}
+
+del {
+  color: #888;
+}
+
+pre,
+code {
+  font: .9em/1.2 Inconsolata, monospace;
+  color: $olive;
+}
+
+pre {
+  background: darken(#fff, 1.8%);
+  padding: 1em;
+}
+
+.meta {
+  color: #888;
+  font-size: .9em;
+  margin-top: -.5em;
+}
+
+.lead {
+  font-size: 1.2135em;
+}

@@ -1,0 +1,22 @@
+.button {
+  background: darken(#fff, 24%);
+  color: rgba(#fff, .9);
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: .7em 1em;
+  padding-top: calc(.7em - 1px);
+  line-height: 1;
+  font-size: 1em;
+  display: inline-block;
+
+  &:hover {
+    background: darken(#fff, 24%);
+    opacity: .8
+  }
+
+  &.blue {
+    background: $blue;
+  }
+}

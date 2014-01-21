@@ -1,4 +1,4 @@
-<header>
+<header class="hero push-bottom">
   <h1>Birdey</h1>
 
   <blockquote>
@@ -7,7 +7,7 @@
 </header>
 
 <main>
-  <section>
+  <section class="push-bottom">
     <h2>Try it</h2>
 
     <blockquote class="tweet">
@@ -17,11 +17,11 @@
 
     <form class="try">
       <input type="text" name="username">
-      <button>Go fetch it!</button>
+      <button class="blue">Go fetch it!</button>
     </form>
   </section>
 
-  <section>
+  <section class="push-bottom">
     <h2>Usage</h2>
 
     <pre><span class="verb">GET</span> <span class="path">/username</span></pre>
@@ -61,12 +61,38 @@
       </tbody>
     </table>
 
+    <h3>Example</h3>
+    <p>You can easily embed a last tweet in your site with jQuery:</p>
+    <pre>$('.twitter').load('//murmuring-badlands-6496.herokuapp.com/username');</pre>
+    <p>Just replace the selector <code>.twitter</code> and the <code>username</code> with the appropriate ones and you're done.</p>
+
     <h3>Note</h3>
     <p>All tweets are cached for <strong>1 hour</strong>, so once you update your status you'll have to wait until the cache expires.</p>
   </section>
 
-  <section>
+  <% if @ranking %>
+    <section class="push-bottom">
+      <h2>Ranking</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ranking.each do |row| %>
+          <tr>
+            <td><%= row[0] %></td>
+            <td><%= row[1] %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
 
+  <section class="push-bottom">
     <h2>Disclaimer</h2>
 
     <p>This is a pet project, not filiated nor funded by any company, thus it may change, it may cease to exist and you'll <strong>not be notified</strong>. Use at your own risk.</p>

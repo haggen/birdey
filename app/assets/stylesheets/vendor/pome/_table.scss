@@ -1,0 +1,23 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  padding: .5em .7em;
+}
+
+td {
+  background: darken(#fff, 6%);
+}
+
+tr:nth-child(2n) td {
+  background: darken(#fff, 2%);
+}
+
+th {
+  border-bottom: 1px solid #ddd;
+  padding-top: 0;
+  text-align: left
+}

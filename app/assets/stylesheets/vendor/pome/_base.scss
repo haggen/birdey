@@ -1,0 +1,62 @@
+
+// .1
+// .2
+// .3
+// .4
+// .5
+// .6
+// .7
+// .8
+// .9
+// 1       <-
+// 1.2135
+// 1.41575
+// 1.618
+// 1.82025
+// 2.0225
+// 2.22475
+// 2.427
+// 2.62925
+// 2.8315
+// 3.03375
+// 3.236
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  padding: 3.236em;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-left: 1.618em;
+  }
+}
+
+::-moz-selection {
+  background: rgba($blue, .4);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba($blue, .4);
+  text-shadow: none;
+}
+
+.scrollable {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.push-bottom {
+  margin-bottom: 3.236rem
+}
+
+.hero {
+  background: darken(#fff, 1.8%);
+  padding: 1.618em;
+  font-size: 1.618em;
+}

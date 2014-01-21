@@ -7,6 +7,28 @@
 </header>
 
 <main>
+  <% if @ranking %>
+    <section class="push-bottom">
+      <h2>Ranking</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ranking.each do |row| %>
+          <tr>
+            <td><%= row[0] %></td>
+            <td><%= row[1] %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
+
   <section class="push-bottom">
     <h2>Try it</h2>
 
@@ -69,28 +91,6 @@
     <h3>Note</h3>
     <p>All tweets are cached for <strong>1 hour</strong>, so once you update your status you'll have to wait until the cache expires.</p>
   </section>
-
-  <% if @ranking %>
-    <section class="push-bottom">
-      <h2>Ranking</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>#</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @ranking.each do |row| %>
-          <tr>
-            <td><%= row[0] %></td>
-            <td><%= row[1] %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </section>
-  <% end %>
 
   <section class="push-bottom">
     <h2>Disclaimer</h2>

@@ -18,13 +18,19 @@ class Tweet # < ActiveRecord::Base
     end
 
     ranking = iron.cache('ranking')
-    keys = ranking.get('_keys').value
+    keys = ranking.get('_keys').try(:value)
+
+    puts 'BEFORE:', keys
 
     if keys
-      keys.split(',').push(username).uniq!.join(',')
+      keys = keys.split(',')
+      keys.push(username)
+      keys = keys.uniq.join(',')
     else
       keys = username
     end
+
+    puts 'AFTER:', keys
 
     ranking.put('_keys', keys)
 

@@ -2,8 +2,8 @@ require 'iron_cache'
 
 class Tweet # < ActiveRecord::Base
   def self.by(username)
-    cache = IronCache::Client.new
-    cache = cache.cache('tweets')
+    iron = IronCache::Client.new
+    cache = iron.cache('tweets')
 
     tweet = cache.get(username).try(:value)
 
@@ -16,6 +16,19 @@ class Tweet # < ActiveRecord::Base
       tweet = twitter.user_timeline(username, count: 1).last.text
       cache.put(username, tweet, expires_in: 1.hour)
     end
+
+    ranking = iron.cache('ranking')
+    keys = ranking.get('_keys').value
+
+    if keys
+      keys.split(',').push(username).uniq!.join(',')
+    else
+      keys = username
+    end
+
+    ranking.put('_keys', keys)
+
+    ranking.increment(username, 1)
 
     tweet
   end
